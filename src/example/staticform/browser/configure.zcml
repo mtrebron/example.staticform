@@ -1,0 +1,32 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="example.staticform">
+
+  <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
+  <include package="z3c.jbot" file="meta.zcml" />
+  <browser:jbot
+      directory="overrides"
+      layer="example.staticform.interfaces.IExampleStaticformLayer"
+      />
+
+  <!-- Publish static files -->
+  <plone:static
+      name="example.staticform"
+      type="plone"
+      directory="static"
+      />
+
+  <!--
+       Custom Display Templates Below
+  -->
+
+  <browser:page
+        name="staticform"
+        for="*"
+        class=".testform.TestForm"
+        permission="zope2.View"
+        />
+
+</configure>
